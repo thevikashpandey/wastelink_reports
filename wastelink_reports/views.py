@@ -5,11 +5,17 @@ import pandas as pd
 
 from django.views.decorators.http import condition
 column_order = ['Sonipat', 'Jaipur','Jodhpur','Ludhiana','Lucknow', 'Bareilly', 'Kolkata', 'Mumbai', 'Bengaluru', 'Chennai',  'Mangalore', 'Hyderabad', 'Vijaywada','Vizag', 'All']
+try:
+    source_file_ib = r"C://Users//Vikas//Downloads/Daily_Dump.Xlsx"
+    dest_file_ib = r'C://Users//Vikas//Downloads/Daily_Dump1.csv'
+    source_file_ob = r"C://Users//Vikas//Downloads/Daily_Dump2.Xlsx"
+    dest_file_ob = r'C://Users//Vikas//Downloads/Daily_Dump2.csv'
+except:
+    source_file_ib=""
+    dest_file_ib=""
+    source_file_ob=""
+    dest_file_ob=""
 
-source_file_ib = r"C://Users//Vikas//Downloads/Daily_Dump.Xlsx"
-dest_file_ib = r'C://Users//Vikas//Downloads/Daily_Dump1.csv'
-source_file_ob = r"C://Users//Vikas//Downloads/Daily_Dump2.Xlsx"
-dest_file_ob = r'C://Users//Vikas//Downloads/Daily_Dump2.csv'
 
 # Load the Excel file into a pandas DataFrame
 df = pd.read_excel(source_file_ib)
