@@ -376,7 +376,7 @@ def kelloggs_report(request):
     return HttpResponse(kg_r1)
 
 def instockmtddone(request):
-    sv = pd.read_csv("D:/wldata/Sep-23/monthly_volume_0923.csv", low_memory=False)
+    sv = pd.read_csv("D:/wldata/Oct/monthly_volume_1005.csv", low_memory=False)
     len(sv.index)
 
     sv.drop(sv[sv['distributor_name'] == "TestWD"].index, inplace=True)
@@ -412,24 +412,24 @@ def instockmtddone(request):
     final.fillna(0, inplace=True)
 
     sv_final = pd.DataFrame(final.to_records())
-    sv_final.to_csv('D://wldata/Sep-23/output_0923.csv')
+    sv_final.to_csv('D://wldata/Oct/output_1005.csv')
     sv_final.fillna(0, inplace=True)
 
     # MTD Break instock vs shipment picked
 
     instockmtd = sv[sv['status'].str.contains('Instock Mark Done')]
-    instockmtd = instockmtd[instockmtd['newdatef'].str.contains('2023-09')]
+    instockmtd = instockmtd[instockmtd['newdatef'].str.contains('2023-10')]
     # instockmtd=instockmtd.pivot_table('item_weight', ['customer_name','ticket_id'], 'newdatef',aggfunc = "sum")
     instockmtd = instockmtd.pivot_table('item_weight', ['customer_name'], 'newdatef', aggfunc="sum")
     instockmtd = pd.DataFrame(instockmtd.to_records())
-    #instockmtd.to_csv('D://Wldata/Sep-23//instockmt_0922.csv')
+    #instockmtd.to_csv('D://Wldata/Oct//instockmt_1005.csv')
 
     # instockmtd.to_csv('D://Wldata/Mar//instockmt_DATA.csv')
     instockmtd = tabulate(instockmtd, headers='keys', tablefmt='html')
     return HttpResponse(instockmtd)
 
 def suppliervolume(request):
-    svq = pd.read_csv('D://wldata/Sep-23/monthly_volume_0923.csv', low_memory=False)
+    svq = pd.read_csv('D://wldata/Oct/monthly_volume_1005.csv', low_memory=False)
     len(svq.index)
 
     svq.drop(svq[svq['distributor_name'] == "TestWD"].index, inplace=True)
@@ -453,9 +453,9 @@ def suppliervolume(request):
     final = svq.pivot_table('item_weight', ['customer_name'], 'newdatef', aggfunc="sum")
     final.fillna(0, inplace=True)
     svq1_final = pd.DataFrame(final.to_records())
-    svq1_final.to_csv('D://Wldata/Sep-23/output_0923.csv')
+    svq1_final.to_csv('D://Wldata/Oct/output_1005.csv')
     svq1_final.fillna(0, inplace=True)
-    #svq1.to_csv('D://wldata/Sep-23/df1.csv')
+    #svq1.to_csv('D://wldata/Oct/df1.csv')
     svq1_final.to_csv("output.csv")
 
     # itcmum_df = df[df['customer_name'] =="ITC Mumbai Distributors"]
