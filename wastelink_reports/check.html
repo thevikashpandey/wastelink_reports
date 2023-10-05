@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="m6JIFTiDeWbjlVkvxzy5dqk5LD55dvuJUeHdvfTn">
+
+        <title>SS Wastelink Sustainability Services Private Limited - Pickup Request</title>
+
+
+
+        <!-- Fonts -->
+        <link href="http://logistics.wastelink.co/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://logistics.wastelink.co/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+
+
+        <link href="http://logistics.wastelink.co/assets/css/animate.css" rel="stylesheet">
+        <link href="http://logistics.wastelink.co/assets/css/style.css" rel="stylesheet">
+        <link href="http://logistics.wastelink.co/assets/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+        <link href="http://logistics.wastelink.co/assets/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+
+         <!-- Data Tables -->
+         <link href="http://logistics.wastelink.co/assets/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+        <link href="http://logistics.wastelink.co/assets/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+        <link href="http://logistics.wastelink.co/assets/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+
+        <link href="http://logistics.wastelink.co/assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+        <!-- Sweet Alert -->
+        <link href="http://logistics.wastelink.co/assets/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="http://logistics.wastelink.co/assets/css/jquery.multiselect.css">
+        <style>
+            .form-horizontal .form-group{
+                margin-right: 0px;
+            }
+            #create_btn{
+                margin-top:10px;
+            }
+            .panel-body{
+                min-height:100px;
+            }
+            .hide{
+                display:none;
+            }
+
+            .pointer{
+                cursor:pointer;
+            }
+
+            td.details-control {
+                background: url('http://logistics.wastelink.co/assets/img/details_open.png') no-repeat center center;
+                cursor: pointer;
+            }
+
+            tr.shown td.details-control {
+                background: url('http://logistics.wastelink.co/assets/img/details_close.png') no-repeat center center;
+            }
+
+            .panel-body {
+                min-height: 0px !important;
+            }
+            .input-group-addon{
+                display:none;
+            }
+
+
+
+        </style>
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <!--
+    pickup_menu,
+    inbound_pickups,
+    outbound_pickups,
+    all_pickups,
+    supplier,
+    edit_supplier,
+    add_supplier
+    cancel_pickups,
+    create_trip,
+    inbound_trip,
+    outbound_trip,
+    report,
+    master_menu,
+    customer,
+    hubs,
+    material_type,
+    transpoters
+
+-->
+<nav x-data="{ open: false }" class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                        <img alt="image" class="img-responsive" style="width: 90%;" src="http://logistics.wastelink.co/assets/img/wastelink_logo_new.png" />
+                    </span>
+                </div>
+                <div class="logo-element">
+                    WL
+                </div>
+            </li>
+            <li>
+                <a href="http://logistics.wastelink.co/dashboard"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+            </li>
+
+                                                <li class="">
+                        <a href="#"><i class="fa fa-truck"></i> <span class="nav-label">Create A New Pickup</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                                                        <li class=""><a href="http://logistics.wastelink.co/new-pickup-request/create/inbound" >Inbound Request</a></li>
+                                                                                        <li class=""><a href="http://logistics.wastelink.co/new-pickup-request/create/outbound" >Outbound Request</a></li>
+
+                        </ul>
+                    </li>
+
+                                    <li class="">
+                        <a href="#"><i class="fa fa-truck"></i> <span class="nav-label">Pickups List</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class=""><a href="http://logistics.wastelink.co/get-all-pickup-request/Inbound" >Inbound Pickups</a></li>
+                                                            <li class=""><a href="http://logistics.wastelink.co/get-all-pickup-request/Outbound" >Outbound Pickups</a></li>
+
+                        </ul>
+                    </li>
+
+                                    <li class="">
+                        <a href="#"><i class="fa fa-plus"></i> <span class="nav-label">Create A New Trip</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                                                            <li>
+                                    <a href="http://logistics.wastelink.co/new/trip/Inbound" >Inbound Trip</a>
+                                </li>
+                                                                                    <li>
+                                <a href="http://logistics.wastelink.co/new/trip/Outbound" >Outbound Trip</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                                <li>
+                    <a href="http://logistics.wastelink.co/all/trips"><i class="fa fa-truck"></i> <span class="nav-label">All Trips</span></a>
+                </li>
+
+                                <li>
+                    <a href="http://logistics.wastelink.co/change/hub/request/pickup/list"><i class="fa fa-truck"></i> <span class="nav-label">Change Hub Request</span></a>
+                </li>
+
+                                <li class="">
+                    <a href="#"><i class="fa fa-file" aria-hidden="true"></i> <span class="nav-label">Reports</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="http://logistics.wastelink.co/export" >Data Export</a>
+                        </li>
+
+                        <li>
+                            <a href="http://logistics.wastelink.co/report/summary/download" >Monthly Cost Review Report</a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="http://logistics.wastelink.co/view/pickup/wastelink/fpe/expense/report/export" >FPE Report</a>
+                        </li>
+                        <li>
+                            <a href="http://logistics.wastelink.co/pending/pickup-list/supplier/report" >Summary of Pending Pickups</a>
+                        </li>
+                        <li>
+                            <a href="http://logistics.wastelink.co/pending/pickup/list/record/show" >Detail View of Pending Pickups</a>
+                        </li>
+
+                        <li>
+                            <a href="http://logistics.wastelink.co/report/transpoter-payments" >Transporter Payments</a>
+                        </li>
+
+                        <li>
+                            <a href="http://logistics.wastelink.co/export/transpoter-payment-report" >Export Payment Report</a>
+                        </li>
+                    </ul>
+                </li>
+                                                <li class="">
+                    <a href="#"><i class="fa fa-book" aria-hidden="true"></i> <span class="nav-label">Masters</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                                                    <li>
+                                <a href="http://logistics.wastelink.co/supplier" >Suppliers</a>
+                            </li>
+
+                                                <li>
+                            <a href="http://logistics.wastelink.co/customer" >Customers</a>
+                        </li>
+
+                                                <li>
+                            <a href="http://logistics.wastelink.co/user" >System Users</a>
+                        </li>
+
+                        <li>
+                            <a href="http://logistics.wastelink.co/city" >Cities</a>
+                        </li>
+
+                                                <li>
+                            <a href="http://logistics.wastelink.co/hub" >Hubs</a>
+                        </li>
+
+                                                <li>
+                            <a href="http://logistics.wastelink.co/material-type" >Material Type</a>
+                        </li>
+
+                                                <li>
+                            <a href="http://logistics.wastelink.co/transporter" >Transporters</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+                        <li class="">
+                <a href="#"><i class="fa fa-file" aria-hidden="true"></i> <span class="nav-label">Transporter Payments</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+
+                    <li>
+                        <a href="http://logistics.wastelink.co/request-for-advnace-payments" >Request For Advance Payment</a>
+                    </li>
+                    <li>
+                        <a href="http://logistics.wastelink.co/payment-status-list/advance" >Payment Status</a>
+                    </li>
+                    <li>
+                        <a href="http://logistics.wastelink.co/completed-trip-submit-transpoter-invoice-lists" >Submit Transporter Invoice</a>
+                    </li>
+                </ul>
+            </li>
+
+                            <li>
+                    <a href="http://logistics.wastelink.co/setting"><i class="fa fa-cog"></i> <span class="nav-label">Email Notification</span></a>
+                </li>
+
+                            <li class="">
+                    <a href="#"><i class="fa fa-file" aria-hidden="true"></i> <span class="nav-label">Pickup Health Metrics</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="http://logistics.wastelink.co/get-pickup-snapshot-report" >Snapshot View</a>
+                        </li>
+                        <li>
+                            <a href="http://logistics.wastelink.co/get-pickup-timebased-snapshot-report" >Time Based View</a>
+                        </li>
+                        <!-- <li>
+                            <a href="http://logistics.wastelink.co/get-pickup-status-snapshot-report" >Status Based View</a>
+                        </li> -->
+                    </ul>
+                </li>
+
+        </ul>
+    </div>
+</nav>
+<div id="page-wrapper" class="gray-bg">
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="javascript:void(0)">
+                    <i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    Welcome, <span onclick="window.location.href='http://logistics.wastelink.co/change-password';" style="cursor:pointer;">Vikash Pandey</span>
+                </li>
+                <li>
+                    <a href="http://logistics.wastelink.co/logout">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="wrapper wrapper-content">
+            <!-- Page Content -->
+            <div class="row">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Data Export</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="http://logistics.wastelink.co/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><strong>Data Export</strong></a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2" id="create_btn"></div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <form method="get" action="http://logistics.wastelink.co/export/data" id="export_techfrm" class="form-horizontal">
+                            <input type="hidden" name="_token" value="m6JIFTiDeWbjlVkvxzy5dqk5LD55dvuJUeHdvfTn">
+                                <div class="row">
+                                                                            <div class="form-group">
+                                            <label class="col-sm-2 control-label">Shipment Type</label>
+                                            <div class="col-sm-4">
+                                                <select data-placeholder="Select Shipment Type" class="chosen-select"  id="shipment_type" name="shipment_type" >
+                                                    <option value="Inbound"  >Inbound</option>
+                                                    <option value="Outbound" >Outbound</option>
+                                                </select>
+                                            </div>
+                                            <label class="col-sm-2 control-label">Pickup/Drop Location</label>
+                                            <div class="col-sm-4">
+                                                <select data-placeholder="Select Pickup/Drop Location" class="chosen-select"  id="hub_id" name="hub_id" >
+                                                    <option value="">Select Pickup/Drop Location</option>
+                                                                                                        <option  value="10" >Bareilly-LKO (Bareilly-LKO)</option>
+                                                                                                        <option  value="1" >Bengaluru (WL-Bengaluru)</option>
+                                                                                                        <option  value="8" >Chennai-BLR (Chennai-BLR)</option>
+                                                                                                        <option  value="5" >Hyderabad (Hyderabad-BLR)</option>
+                                                                                                        <option  value="13" >Jaipur-SNP (Jaipur-SNP)</option>
+                                                                                                        <option  value="15" >Jodhpur-SNP (Jodhpur-SNP)</option>
+                                                                                                        <option  value="14" >Kolkata-LKO (Kolkata-LKO)</option>
+                                                                                                        <option  value="3" >Lucknow (WL-Lucknow)</option>
+                                                                                                        <option  value="7" >Ludhiana-SNP (Ludhiana-SNP)</option>
+                                                                                                        <option  value="12" >Mangalore-BLR (Mangalore-BLR)</option>
+                                                                                                        <option  value="4" >Mumbai (WL-Mumbai)</option>
+                                                                                                        <option  value="2" >Sonipat (WL-Sonipat)</option>
+                                                                                                        <option  value="11" >Varanasi-LKO (Varanasi-LKO)</option>
+                                                                                                        <option  value="6" >Vijaywada-BLR (Vijaywada-BLR)</option>
+                                                                                                        <option  value="9" >Vizag-BLR (Vizag-BLR)</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                                                                                            <div class="form-group">
+                                        <label class="col-sm-2 control-label">Trip Number</label>
+                                        <div class="col-sm-4">
+                                            <input type="text"  class="form-control"  id="trip_number" name="trip_number"
+                                            value="" >
+                                        </div>
+                                        <label class="col-sm-2 control-label">Pickup Number</label>
+                                        <div class="col-sm-4">
+                                            <input type="text"  class="form-control" value="" id="pickup_number" name="pickup_number">
+                                        </div>
+                                    </div>
+                                                                        <div class="form-group">
+                                        <label class="col-sm-2 control-label">Pickup Status</label>
+                                        <div class="col-sm-4">
+                                            <select data-placeholder="Select Pickup Status" class="chosen-select"  id="pickup_status_id" name="pickup_status_id" >
+                                                <option value="">Select Pickup Status</option>
+                                                                                                    <option value="1" >New</option>
+                                                                                                    <option value="7" >Ready for Dispatch</option>
+                                                                                                    <option value="10" >Pickup Accepted</option>
+                                                                                                    <option value="11" >Pickup Verified</option>
+                                                                                                    <option value="8" >WL ID Assigned</option>
+                                                                                                    <option value="6" >Field Executive Assigned</option>
+                                                                                                    <option value="4" >Field Executive Inspected</option>
+                                                                                                    <option value="9" >Planned for Pickup</option>
+                                                                                                    <option value="5" >Vehicle Deployed</option>
+                                                                                                    <option value="12" >Intransit to Wastelink</option>
+                                                                                                    <option value="2" >Pickup Completed</option>
+                                                                                                    <option value="3" >Cancelled</option>
+                                                                                                    <option value="13" >Request For Cancellation </option>
+                                                                                                    <option value="14" >Pickup Hold</option>
+
+                                            </select>
+                                        </div>
+                                                                                <label class="col-sm-2 control-label">Material Type</label>
+                                        <div class="col-sm-4">
+                                            <select data-placeholder="Select Material Type" class="chosen-select"  id="material_type_id" name="material_type_id" >
+                                                <option value="">Select Material Type</option>
+                                                                                                <option  value="2" >Atta</option>
+                                                                                                <option  value="1" >BCN</option>
+                                                                                                <option  value="5" >Biscuits</option>
+                                                                                                <option  value="14" >Bread</option>
+                                                                                                <option  value="12" >Disposal</option>
+                                                                                                <option  value="18" >Drums</option>
+                                                                                                <option  value="17" >Eco Feed</option>
+                                                                                                <option  value="9" >Hard Cardborad</option>
+                                                                                                <option  value="16" >Horlics</option>
+                                                                                                <option  value="6" >PCP</option>
+                                                                                                <option  value="8" >Pulses</option>
+                                                                                                <option  value="13" >Salt</option>
+                                                                                                <option  value="11" >Sauces</option>
+                                                                                                <option  value="4" >Snacks</option>
+                                                                                                <option  value="10" >Soft Cardboard</option>
+                                                                                                <option  value="3" >Tea</option>
+                                                                                                <option  value="15" >Toilet Soap</option>
+                                                                                                <option  value="7" >Wrappers</option>
+
+                                            </select>
+                                        </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                            <label class="col-sm-2 control-label">Transporter Name</label>
+                                            <div class="col-sm-4">
+                                                <select data-placeholder="Select Transporter Name" class="chosen-select"  id="transpoter_name" name="transpoter_name" >
+                                                    <option value="">Select Transporter Name</option>
+                                                                                                            <option value="206" >A K CARGO CARE (TPT-206)</option>
+                                                                                                            <option value="2" >A S Logistics Services (ASL)</option>
+                                                                                                            <option value="119" >A1 Roadlines (TPT-119)</option>
+                                                                                                            <option value="124" >Abhishek Transport (TPT-124)</option>
+                                                                                                            <option value="66" >Adarsh Transport Service (TPT-66)</option>
+                                                                                                            <option value="221" >ADHOC-AUTO (TPT-221)</option>
+                                                                                                            <option value="123" >Ahimsa Industries - Party Vehicle (TPT-123)</option>
+                                                                                                            <option value="42" >AK Trading Co - Party Vehicle (TPT-42)</option>
+                                                                                                            <option value="182" >All India Road Transport (TPT-182)</option>
+                                                                                                            <option value="90" >Aman Transport (TPT-90)</option>
+                                                                                                            <option value="40" >Amar Freight Carrier (TPT-40)</option>
+                                                                                                            <option value="166" >Amrik Singh (TPT-166)</option>
+                                                                                                            <option value="190" >ANGREJ (TPT-190)</option>
+                                                                                                            <option value="5" >Ansh Vansh Tempo Service (TPT-)</option>
+                                                                                                            <option value="53" >Antil Roadlines (TPT-53)</option>
+                                                                                                            <option value="211" >Arjun Kumar (TPT-211)</option>
+                                                                                                            <option value="6" >ARL Expressways (TPT-)</option>
+                                                                                                            <option value="162" >Arun Transport (TPT-162)</option>
+                                                                                                            <option value="198" >Aryan Goods Carrier (TPT-198)</option>
+                                                                                                            <option value="177" >AVINASH CARGO PVT LTD (TPT-177)</option>
+                                                                                                            <option value="213" >AYUSH SHARMA (TPT-213)</option>
+                                                                                                            <option value="178" >Azad Singh (TPT-178)</option>
+                                                                                                            <option value="179" >Azad Singh (TPT-179)</option>
+                                                                                                            <option value="106" >Bajrang Logistics (TPT-106)</option>
+                                                                                                            <option value="117" >Baluni Cargo Movers (TPT-117)</option>
+                                                                                                            <option value="170" >Beyond Logistics (TPT-170)</option>
+                                                                                                            <option value="128" >Bhagirath Transport Service (TPT-128)</option>
+                                                                                                            <option value="97" >Bhagyalaxmi Transport Company (TPT-97)</option>
+                                                                                                            <option value="76" >Bhawani Transport Co (TPT-76)</option>
+                                                                                                            <option value="144" >Bhusan Transport Company (TPT-144)</option>
+                                                                                                            <option value="146" >Bhushan Transport Co (TPT-146)</option>
+                                                                                                            <option value="77" >Big Truck (TPT-77)</option>
+                                                                                                            <option value="225" >Bikkar Singh (TPT-225)</option>
+                                                                                                            <option value="7" >Bullet Logistics (TPT-)</option>
+                                                                                                            <option value="114" >BUSYBEES LOGISTICS SOLUTION (TPT-114)</option>
+                                                                                                            <option value="8" >C Cube Transporter (TPT-)</option>
+                                                                                                            <option value="80" >Caspian Express (TPT-80)</option>
+                                                                                                            <option value="127" >Chadha Cargo Carrier (TPT-127)</option>
+                                                                                                            <option value="88" >Chaudhari Trader - Party Vehicle (TPT-88)</option>
+                                                                                                            <option value="57" >Chhattisgarh Goods (TPT-57)</option>
+                                                                                                            <option value="196" >CMK enterprises (TPT-196)</option>
+                                                                                                            <option value="187" >D Brothers Transport (TPT-187)</option>
+                                                                                                            <option value="9" >Dahiya Transport Service (TPT-)</option>
+                                                                                                            <option value="143" >Darshan Singh (TPT-143)</option>
+                                                                                                            <option value="132" >Davinder Kumar (TPT-132)</option>
+                                                                                                            <option value="45" >Delhi Patiala Transport Company (TPT-45)</option>
+                                                                                                            <option value="74" >Delhi Punjab Roadlines (TPT-74)</option>
+                                                                                                            <option value="51" >Delhi Transport Company (TPT-51)</option>
+                                                                                                            <option value="29" >Delhivery - FTL (TPT-29)</option>
+                                                                                                            <option value="10" >Delhivery - PTL (TPT-)</option>
+                                                                                                            <option value="104" >Dhanes Logisitics (TPT-104)</option>
+                                                                                                            <option value="56" >Dharam Pig Farm - Party Vehicle (TPT-56)</option>
+                                                                                                            <option value="202" >Dharampal Singh (TPT-202)</option>
+                                                                                                            <option value="193" >DP World (TPT-193)</option>
+                                                                                                            <option value="174" >Dutta Road Lines (TPT-174)</option>
+                                                                                                            <option value="137" >Ekta Transport (TPT-137)</option>
+                                                                                                            <option value="73" >Forza Logistics Techlabs (TPT-73)</option>
+                                                                                                            <option value="61" >Galaxy Transport Service (TPT-61)</option>
+                                                                                                            <option value="150" >Giriraj Roadline (TPT-150)</option>
+                                                                                                            <option value="160" >Gurdeep Singh (TPT-160)</option>
+                                                                                                            <option value="172" >Gurjant Singh (TPT-172)</option>
+                                                                                                            <option value="171" >Gurnam Singh (TPT-171)</option>
+                                                                                                            <option value="139" >Guru Nanak Transport Company (TPT-139)</option>
+                                                                                                            <option value="108" >Haldwani Goods Transport (TPT-108)</option>
+                                                                                                            <option value="86" >Handa Roadlines (TPT-86)</option>
+                                                                                                            <option value="209" >HARBANS SINGH (TPT-209)</option>
+                                                                                                            <option value="62" >Hardik Mulik (TPT-62)</option>
+                                                                                                            <option value="165" >Harpreet Singh (TPT-165)</option>
+                                                                                                            <option value="173" >HFC LOGISTICS (TPT-173)</option>
+                                                                                                            <option value="155" >Him Goods Carrier (TPT-155)</option>
+                                                                                                            <option value="157" >Himland Goods Carrier (Regd (TPT-157)</option>
+                                                                                                            <option value="31" >Hinglaj Transport (TPT-31)</option>
+                                                                                                            <option value="226" >Indinet Logistics PVT LTD (TPT-226)</option>
+                                                                                                            <option value="161" >Jagdev Singh (TPT-161)</option>
+                                                                                                            <option value="11" >Jai Bhavani Transport (TPT-)</option>
+                                                                                                            <option value="12" >Jai Bhola Transport Co (TPT-)</option>
+                                                                                                            <option value="151" >Jai Meera Pahalwan Service (TPT-151)</option>
+                                                                                                            <option value="204" >Jammu Himanchal Freight Carrier (TPT-204)</option>
+                                                                                                            <option value="164" >Jaswinder Singh (TPT-164)</option>
+                                                                                                            <option value="158" >Jatin Kumar S/O Ramesh Chand (TPT-158)</option>
+                                                                                                            <option value="85" >JDAC Sales - Party Vehicle (TPT-85)</option>
+                                                                                                            <option value="13" >JHT Logistics (TPT-)</option>
+                                                                                                            <option value="50" >Jitendra Cattle Feeds (TPT-50)</option>
+                                                                                                            <option value="134" >Jitesh Logistics (TPT-134)</option>
+                                                                                                            <option value="121" >JK Express Cargo (TPT-121)</option>
+                                                                                                            <option value="224" >K-Express (TPT-224)</option>
+                                                                                                            <option value="159" >KAILAS S. LAWANDE (TPT-159)</option>
+                                                                                                            <option value="192" >Kangaroo cargo (TPT-192)</option>
+                                                                                                            <option value="216" >KARMJEET  SINGH (TPT-216)</option>
+                                                                                                            <option value="210" >KARNAIL NATH (TPT-210)</option>
+                                                                                                            <option value="181" >Kataria Transport Service (TPT-181)</option>
+                                                                                                            <option value="46" >Keetup &amp; Co (TPT-46)</option>
+                                                                                                            <option value="141" >KHAN NASEEMA BANO TRANSPORT (TPT-141)</option>
+                                                                                                            <option value="126" >KP Transport (TPT-126)</option>
+                                                                                                            <option value="35" >Krishna Logistics Solution (TPT-35)</option>
+                                                                                                            <option value="113" >Kuldeep Singh S/O Ram Sarup (TPT-113)</option>
+                                                                                                            <option value="34" >Lalita Logistics &amp; Agencies (TPT-34)</option>
+                                                                                                            <option value="125" >Laxmi Roadlines (TPT-125)</option>
+                                                                                                            <option value="203" >LCM logistics (TPT-203)</option>
+                                                                                                            <option value="148" >Linguswami Transport (TPT-148)</option>
+                                                                                                            <option value="112" >Lovepreet Singh Transport (TPT-112)</option>
+                                                                                                            <option value="48" >Maa Luxmi Devi Agro (TPT-48)</option>
+                                                                                                            <option value="175" >Madhu Sudan Logistics (TPT-175)</option>
+                                                                                                            <option value="14" >Mahadev Transport Services (TPT-)</option>
+                                                                                                            <option value="195" >MAHAKAL ROADWAYS (TPT-195)</option>
+                                                                                                            <option value="36" >Mahalaxmi Enterprises (TPT-36)</option>
+                                                                                                            <option value="116" >Mahindra Logistics (TPT-116)</option>
+                                                                                                            <option value="197" >Malkeet Singh Dhindsa (TPT-197)</option>
+                                                                                                            <option value="199" >Manchanda Transport Co. (TPT-199)</option>
+                                                                                                            <option value="37" >Manoj Transport Service (TPT-37)</option>
+                                                                                                            <option value="147" >Marwari Goods Moter Transport Co (TPT-147)</option>
+                                                                                                            <option value="145" >Marwari Goods Moter Transport Company (TPT-145)</option>
+                                                                                                            <option value="75" >Mauli Transport (TPT-75)</option>
+                                                                                                            <option value="188" >Mehak Freight and Logistics (TPT-188)</option>
+                                                                                                            <option value="49" >MM INDUSTRY (TPT-49)</option>
+                                                                                                            <option value="185" >Mobility Fulfilment Services (TPT-185)</option>
+                                                                                                            <option value="215" >MRL TRANSPORT MANASA ROAD LINES (TPT-215)</option>
+                                                                                                            <option value="15" >Narender Kumar Transport Service (TPT-)</option>
+                                                                                                            <option value="142" >Naresh Kumar Yadav Transport (TPT-142)</option>
+                                                                                                            <option value="100" >NARESH TRANSPORT (TPT-100)</option>
+                                                                                                            <option value="16" >New Deccan Transport (TPT-)</option>
+                                                                                                            <option value="39" >New Haryana Transport Company (TPT-39)</option>
+                                                                                                            <option value="17" >New Ludhiana Hemkunt Sahib Transport Company (TPT-)</option>
+                                                                                                            <option value="153" >Nirmal Singh (TPT-153)</option>
+                                                                                                            <option value="107" >Nitco Logistics (TPT-107)</option>
+                                                                                                            <option value="18" >NSF Logistics (TPT-)</option>
+                                                                                                            <option value="68" >NSS Corporation (TPT-68)</option>
+                                                                                                            <option value="60" >Nutrigo Feeds Pvt Ltd - Party Vehicle (TPT-60)</option>
+                                                                                                            <option value="168" >Nyra Transport (TPT-168)</option>
+                                                                                                            <option value="103" >Om Logistics (TPT-103)</option>
+                                                                                                            <option value="44" >Om Sai transport Service (TPT-44)</option>
+                                                                                                            <option value="19" >OP Roadlines (TPT-)</option>
+                                                                                                            <option value="102" >Paradise Logistics (TPT-102)</option>
+                                                                                                            <option value="78" >Party Vehicle (TPT-78)</option>
+                                                                                                            <option value="99" >Party Vehicle Sai Teza Marketing (TPT-99)</option>
+                                                                                                            <option value="30" >Patanjali Logistics (TPT-30)</option>
+                                                                                                            <option value="28" >PORTER (TPT-28)</option>
+                                                                                                            <option value="96" >Prathibha Trans Logistics (TPT-96)</option>
+                                                                                                            <option value="131" >Pravin Tempo service (TPT-131)</option>
+                                                                                                            <option value="135" >Preeti Kaur (TPT-135)</option>
+                                                                                                            <option value="223" >QAYYUM TRANSPORT (TPT-223)</option>
+                                                                                                            <option value="129" >Quick Transport Solution (TPT-129)</option>
+                                                                                                            <option value="217" >R.S TRANSPORT PVT. LTD (TPT-217)</option>
+                                                                                                            <option value="67" >Radha Swamy Transport (TPT-67)</option>
+                                                                                                            <option value="122" >Rajiv Handa (TPT-122)</option>
+                                                                                                            <option value="140" >Raju Transport (TPT-140)</option>
+                                                                                                            <option value="169" >Ramesh Transport Company (TPT-169)</option>
+                                                                                                            <option value="130" >Reliabale Supply Chain (TPT-130)</option>
+                                                                                                            <option value="3" >Ritco Logistics (TPT-)</option>
+                                                                                                            <option value="41" >Rohtas Cardboard - Party Vehicle (TPT-41)</option>
+                                                                                                            <option value="83" >RS Enterprises - Party Vehicle (TPT-83)</option>
+                                                                                                            <option value="20" >RTS Logistics (TPT-)</option>
+                                                                                                            <option value="186" >S S Parcel Service (TPT-186)</option>
+                                                                                                            <option value="201" >S. Satwant Singh (TPT-201)</option>
+                                                                                                            <option value="156" >Sai Goods Carrier (TPT-156)</option>
+                                                                                                            <option value="84" >Sakshi Road Carrier (TPT-84)</option>
+                                                                                                            <option value="54" >Samridhi Logisitics (TPT-54)</option>
+                                                                                                            <option value="138" >Sandeep Singh (TPT-138)</option>
+                                                                                                            <option value="167" >Sandeep Transport Service (TPT-167)</option>
+                                                                                                            <option value="136" >Sandhya Roadlines (TPT-136)</option>
+                                                                                                            <option value="21" >Sanjay Transport (TPT-)</option>
+                                                                                                            <option value="94" >Sapthagiri Feeds- Party Vehicle (TPT-94)</option>
+                                                                                                            <option value="52" >Saraswati Logistics (TPT-52)</option>
+                                                                                                            <option value="22" >Sehgal Logistics (TPT-)</option>
+                                                                                                            <option value="55" >Shahi Feed - Party Vehicle (TPT-55)</option>
+                                                                                                            <option value="23" >Shiv Express Logistics (TPT-)</option>
+                                                                                                            <option value="154" >Shiv Shakti Transport Co. (TPT-154)</option>
+                                                                                                            <option value="32" >Shivani Carriers (TPT-32)</option>
+                                                                                                            <option value="111" >Shivneri Roadways (TPT-111)</option>
+                                                                                                            <option value="222" >Shlok Enterprises (TPT-222)</option>
+                                                                                                            <option value="38" >Shree Ganesh Enterprises (TPT-38)</option>
+                                                                                                            <option value="189" >Shree Ganesh Transport Company (TPT-189)</option>
+                                                                                                            <option value="63" >Shree Logistics &amp; courier (TPT-63)</option>
+                                                                                                            <option value="91" >Shree Shyam Logistics (TPT-91)</option>
+                                                                                                            <option value="24" >Shree Transport (TPT-)</option>
+                                                                                                            <option value="101" >Shreeji Translogistics (TPT-101)</option>
+                                                                                                            <option value="105" >Shri Ganesh Roadlines (TPT-105)</option>
+                                                                                                            <option value="176" >Shri Sainath Transport Service (TPT-176)</option>
+                                                                                                            <option value="152" >Shri Shyam Logistics (TPT-152)</option>
+                                                                                                            <option value="65" >Shriram Roadline (TPT-65)</option>
+                                                                                                            <option value="47" >Shubham Agro Food (TPT-47)</option>
+                                                                                                            <option value="98" >Siddayappa Roadline (TPT-98)</option>
+                                                                                                            <option value="64" >Siddhi Vinayak Packers and Movers (TPT-64)</option>
+                                                                                                            <option value="1" >SLN Transport (SLN)</option>
+                                                                                                            <option value="89" >SN ELITE INFOTECH (TPT-89)</option>
+                                                                                                            <option value="163" >Sohan Lal (TPT-163)</option>
+                                                                                                            <option value="58" >Speed Fox (TPT-58)</option>
+                                                                                                            <option value="25" >SR Enterprises (TPT-)</option>
+                                                                                                            <option value="81" >SR Traders - Party Vehicle (TPT-81)</option>
+                                                                                                            <option value="92" >SRI BALKAMPET YELLAM TALLI MINI TRANSPORT (TPT-92)</option>
+                                                                                                            <option value="200" >Sri Guru Narasimha Carriers (TPT-200)</option>
+                                                                                                            <option value="183" >Sri Indira Transport (TPT-183)</option>
+                                                                                                            <option value="110" >Sri Meenakshi Transport (TPT-110)</option>
+                                                                                                            <option value="33" >SS Carrying Corporation (TPT-33)</option>
+                                                                                                            <option value="219" >Sultan Singh (TPT-219)</option>
+                                                                                                            <option value="59" >Supplier Delivered (TPT-59)</option>
+                                                                                                            <option value="191" >Suraj Freight Carrier (TPT-191)</option>
+                                                                                                            <option value="70" >Suryapputram Roadline (TPT-70)</option>
+                                                                                                            <option value="133" >Suvarna Organics- Party Vehicle (TPT-133)</option>
+                                                                                                            <option value="120" >Thakur Goods Carrier (TPT-120)</option>
+                                                                                                            <option value="184" >The Bharat Motor Transport Co. (P) LTD (TPT-184)</option>
+                                                                                                            <option value="149" >The Delhi Sonepat Goods Transport Co. regd (TPT-149)</option>
+                                                                                                            <option value="115" >Tirupati Logistics (TPT-115)</option>
+                                                                                                            <option value="194" >TRUCK ON LOGISTICS (TPT-194)</option>
+                                                                                                            <option value="4" >UNITY 3PL SERVICES (TPT-)</option>
+                                                                                                            <option value="109" >UP Bombay Roadways (TPT-109)</option>
+                                                                                                            <option value="205" >UTSAV PARIVAHAN PRIVATE LIMITED (TPT-205)</option>
+                                                                                                            <option value="69" >Uzair Enterprises-Party Vehicle (TPT-69)</option>
+                                                                                                            <option value="79" >V Express (TPT-79)</option>
+                                                                                                            <option value="208" >V trans India Ltd (TPT-208)</option>
+                                                                                                            <option value="26" >Vaibhav Transport Service (TPT-)</option>
+                                                                                                            <option value="27" >Vaishali Transport Service (TPT-)</option>
+                                                                                                            <option value="220" >Vedansh  Logistics (TPT-220)</option>
+                                                                                                            <option value="214" >Venkatesh Anchan (TPT-214)</option>
+                                                                                                            <option value="93" >Vighnaharta Transport (TPT-93)</option>
+                                                                                                            <option value="207" >Vijay Kumar (TPT-207)</option>
+                                                                                                            <option value="212" >Vikas Kumar (TPT-212)</option>
+                                                                                                            <option value="218" >Viresh Kumar (TPT-218)</option>
+                                                                                                            <option value="95" >Whistle Drive (TPT-95)</option>
+                                                                                                            <option value="82" >Wisebin - Party Vehicle (TPT-82)</option>
+                                                                                                            <option value="180" >Yadav Transport Service (TPT-180)</option>
+
+                                                </select>
+                                            </div>
+                                            <label class="col-sm-2 control-label">Transpoter Type</label>
+                                            <div class="col-sm-4">
+                                                <select data-placeholder="Select Transporter Type" class="chosen-select"  id="transpoter_type" name="transpoter_type" >
+                                                    <option value="">Select Transporter Type</option>
+                                                                                                            <option value="3" >Fixed Vehicle</option>
+                                                                                                            <option value="1" >Full Truck Load Transport</option>
+                                                                                                            <option value="2" >Part Truck Load Transport</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">From Expected Pickup Date</label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" required value="" id="from_tentative_pickup_date" name="from_tentative_pickup_date">
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-2 control-label">To Expected Pickup Date</label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" required value="" id="to_tentative_pickup_date" name="to_tentative_pickup_date">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" id="btn_export"  class="btn btn-outline btn-primary dim pull-right btnexcel"><i class="fa fa-file-excel-o"></i> Export</button>
+                                        <button type="button" onclick="window.location.href='http://logistics.wastelink.co/export';" class="btn btn-outline pull-right btn-success dim btnexcel"> Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+            <div class="footer">
+                <div class="col-md-12">
+                    <strong>Copyright</strong> Wastelink CRM &copy; 2022-2024
+                    <span style="float:right;">Developed By: <b>Vijayvargiyait</b></span>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <div class="modal inmodal" id="pickup_intransit_model" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" style="width: 1000px;">
+            <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="intransit_pickup_number"></h4>
+                    </div>
+                    <div class="modal-body">
+                            <div class="alert alert-success validation" style="display: none;">
+      <button type="button" class="close alert-close"><span>×</span></button>
+            <p class="text-left"></p>
+      </div>
+<div class="alert alert-danger validation" style="display: none;">
+      <button type="button" class="close alert-close"><span>×</span></button>
+      <ul class="text-left">
+      </ul>
+</div>                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Pickup Date*</label>
+                                <div class="col-sm-4">
+                                    <input type="hidden" name="txt_intransit_pickup_id" id="txt_intransit_pickup_id">
+                                    <input type="hidden" name="txt_intransit_trip_id" id="txt_intransit_trip_id">
+                                    <input type="hidden" name="txt_intransit_pickup_number" id="txt_intransit_pickup_number">
+                                    <input type="date" max="2023-09-14" class="form-control" value=""
+                                    id="actual_pickup_plan_date" name="actual_pickup_plan_date">
+                                </div>
+                                <div class="col-md-5">
+                                    <a href="javascript:void(0)" onclick="IntransitToWastelinkUpdate()"
+                                    class="btn btn-success" title="Click here Pickup Intransit to Wastelink ">Save Intransit to Wastelink</a>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal inmodal" id="weightDocModel" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="txt_document_title"></h4>
+                </div>
+                <div class="modal-body">
+                    <p>Click here to <a href="" target="_blank" id="href_view">View Full Size</a></p>
+                    <img src="" id="document_file_data" style="width:100% !important;">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    <!-- Mainly scripts -->
+    <script src="http://logistics.wastelink.co/assets/js/jquery-2.1.1.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/bootstrap.min.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="http://logistics.wastelink.co/assets/js/inspinia.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="http://logistics.wastelink.co/assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Clock picker -->
+    <script src="http://logistics.wastelink.co/assets/js/plugins/clockpicker/clockpicker.js"></script>
+
+     <!-- Data Tables -->
+     <script src="http://logistics.wastelink.co/assets/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+    <!-- Chosen -->
+    <script src="http://logistics.wastelink.co/assets/js/plugins/chosen/chosen.jquery.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="http://logistics.wastelink.co/assets/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+
+    <!-- Data picker -->
+   <script src="http://logistics.wastelink.co/assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+    <script src="http://logistics.wastelink.co/assets/js/myscript.js"></script>
+    <script src="http://logistics.wastelink.co/assets/js/jquery.multiselect.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+
+        <script type="text/javascript">
+        $('#btn_export').click(function(event) {
+                event.preventDefault();
+                var startDay = new Date($("#from_tentative_pickup_date").val());
+                var endDay = new Date($("#to_tentative_pickup_date").val());
+                var millisBetween = startDay.getTime() - endDay.getTime();
+                var days = millisBetween / (1000 * 3600 * 24);
+                final_days = Math.round(Math.abs(days));
+                if(final_days>90){
+                    swal("Please select 90 days date range.");
+                }else if(startDay>endDay){
+                    swal("Please select To Expected Pickup date greater than From Expected Pickup date.");
+                }else{
+                    $("#export_techfrm").submit();
+                }
+
+
+            }
+        );
+
+        function checkExportValidation(){
+
+
+        }
+    </script>
+        <script>
+
+       //$('#langOpt[multiple]').multiselect();
+       $('.select-checkbox').multiselect({
+            columns: 1,
+            texts: {
+                placeholder: 'Please Select',
+                search     : 'Search here...'
+            },
+            search: true,
+            selectAll: true
+        });
+
+    var today, datepicker;
+    today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+
+        $('.clockpicker').clockpicker();
+        $('.input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true,
+            });
+
+        var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+        $(document).on("change", ".update_city", function () {
+            var sel_id = $(this).val();
+            var sel_id_name = $(this).attr('id');
+            var city_id_name = sel_id_name.replace("state", "city");
+            var link = $(this).find(':selected').attr('data-href');
+
+            $.ajax({
+                method: "GET",
+                url: link,
+                success: function (response) {
+                    console.log(response);
+                    $("#"+city_id_name+"").html(response.data);
+                    $('.chosen-select').trigger("chosen:updated");
+                }
+            });
+        });
+
+        $(document).on("change", ".srch_get_pickup_location_list", function () {
+            var sel_id = $(this).val();
+            if(sel_id!=""){
+                var link = $(this).find(':selected').attr('data-href');
+                $.ajax({
+                    method: "GET",
+                    url: link,
+                    success: function (response) {
+                        console.log(response);
+                        $("#srch_supplier_location").html(response.data);
+                        $('.chosen-select').trigger("chosen:updated");
+                    }
+                });
+            }else{
+                $("#srch_supplier_location").html('<option value="">Select Supplier Location</option>');
+                $('.chosen-select').trigger("chosen:updated");
+            }
+
+        });
+
+        $(document).on("change", ".srch_get_pickup_location_list_multiple", function () {
+            var sel_id = $(this).val();
+            if(sel_id!=""){
+                var link = "http://logistics.wastelink.co/get-supplier-all-location-list-multiple-data/"+sel_id+"";
+
+                $.ajax({
+                    method: "GET",
+                    url: link,
+                    success: function (response) {
+                        console.log(response);
+                        //$("#srch_supplier_location_multiple").html(response.data);
+                        //$('.chosen-select').trigger("chosen:updated");
+
+                        // $("#srch_supplier_location_multiple").multiselect('refresh');
+
+                        // $("#srch_supplier_location_multiple").multiselect('destroy');
+                        // $("#srch_supplier_location_multiple").multiselect();
+
+                        //$('#srch_supplier_location_multiple').multiselect('dataprovider', response.data);
+
+                        $("#srch_supplier_location_multiple").html(response.data);
+                        $("#srch_supplier_location_multiple").multiselect('reload');
+                        //$('#srch_supplier_location_multiple').trigger("change");
+
+
+
+                    }
+                });
+            }else{
+                $("#srch_supplier_location_multiple").html('');
+                $(this.id).multiselect('reload');
+            }
+
+
+
+        });
+
+        function cal_per_kg(){
+            var per_kg = 0;
+            var total_qty = $("#total_pickup_qty").val();
+            var fright_cost = $("#fright_cost").val();
+            var lul_charges = $("#lul_charges").val();
+
+
+            if (fright_cost!="" && lul_charges!=""  && total_qty>0){
+                //(Freight+LUL/material quantity)
+                //total_cost = parseFloat(fright_cost)+parseFloat(lul_charges)+
+                per_kg = parseFloat(fright_cost)+parseFloat(lul_charges);
+                per_kg = parseFloat(per_kg)/parseFloat(total_qty);
+                per_kg = per_kg.toFixed(2);
+                console.log("Qty: "+total_qty);
+                console.log("Fright: "+fright_cost);
+                console.log("LUL: "+lul_charges);
+            }
+            $("#cost_per_kg").val(per_kg);
+        }
+
+        function cal_per_kg_old_bkp(){
+            var per_kg = 0;
+            var total_qty = 0;
+            var fright_cost = $("#fright_cost").val();
+            var lul_charges = $("#lul_charges").val();
+
+            $('.pickup_sr').attr('required', false);
+            $('.planned_date').attr('required', false);
+            $(".pickup_ids:checked").each(function(){
+                //console.log($(this).data("qty"));
+                total_qty += $(this).data("qty");
+                $('#pickup_sr_'+$(this).val()).attr('required', true);
+                $('#pikcup_planned_date_'+$(this).val()).attr('required', true);
+            });
+            if (fright_cost!="" && lul_charges!=""  && $('.pickup_ids').filter(':checked').length){
+
+                //$('input').attr('required', false);
+                //(Freight+LUL/material quantity)
+                //total_cost = parseFloat(fright_cost)+parseFloat(lul_charges)+
+                per_kg = parseFloat(fright_cost)+parseFloat(lul_charges);
+                per_kg = parseFloat(per_kg)/parseFloat(total_qty);
+                per_kg = per_kg.toFixed(2);
+                console.log("Qty: "+total_qty);
+                console.log("Fright: "+fright_cost);
+                console.log("LUL: "+lul_charges);
+            }
+            $("#cost_per_kg").val(per_kg);
+            $("#total_pickup_qty").val(total_qty);
+
+        }
+
+
+       function total_qty_show(){
+            /* This varibale required for If we are searching use in datatable.*/
+
+            var total_qty = 0;
+            var total_pickup = 0;
+            $(".pickup_ids:checked").each(function(){
+                total_pickup++;
+                //console.log($(this).data("qty"));
+                total_qty +=  $(this).data("qty");
+                $('#pickup_sr_'+$(this).val()).attr('required', true);
+                $('#pikcup_planned_date_'+$(this).val()).attr('required', true);
+            });
+
+            $("#total_pickup_qty").val(total_qty);
+       }
+
+       function RemovePackingPhoto(id){
+
+        swal({
+            title: "Are you sure to Remove this photo?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, Cancelled!",
+            cancelButtonText: "No",
+            closeOnConfirm: true,
+            closeOnCancel: true
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        method: "GET",
+                        url: "http://logistics.wastelink.co/pickup/matrial-packaging-photos-delete-remove/save/"+id+"",
+                        success: function (response) {
+                            if(response.data){
+                                swal({
+                                    title: "",
+                                    text: "Packaging Photo has been deleted.",
+                                    type: "success",
+                                    },function(){
+                                        window.location.reload();
+                                    });
+                            }else{
+                                swal("", "Error! Please try again.", "error");
+                            }
+                        }
+                    });
+                }else{
+                    window.location.reload();
+                }
+            });
+       }
+
+       function Cancelled_trip(tripid){
+
+        swal({
+            title: "Are you sure to Cancelled trip?",
+            text: "If Trip is cancelled then all pickups are again avilable for new trip.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, Cancelled!",
+            cancelButtonText: "No",
+            closeOnConfirm: true,
+            closeOnCancel: true
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        method: "GET",
+                        url: "http://logistics.wastelink.co/trip/cancelled/"+tripid+"",
+                        success: function (response) {
+                            if(response.data){
+                                swal({
+                                    title: "",
+                                    text: "Trip has been cancelled.",
+                                    type: "success",
+                                    },function(){
+                                        window.location.reload();
+                                    });
+                            }else{
+                                swal("", "Error! Please try again.", "error");
+                            }
+                        }
+                    });
+                }else{
+                    window.location.reload();
+                }
+            });
+       }
+
+       function approvedChangeHub(pickup_id){
+        swal({
+            title: "Are you sure to Update Hub Location in Wastelink System?",
+            text: "Please update hub location in wastelink system.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#1ab394",
+            confirmButtonText: "Yes, Approved!",
+            cancelButtonText: "No",
+            closeOnConfirm: true,
+            closeOnCancel: true
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        method: "GET",
+                        url: "http://logistics.wastelink.co/change/hub/request/pickup/status/update/"+pickup_id+"",
+                        success: function (response) {
+                            swal({
+                                title: "",
+                                text: "Hub Location Status has been updated.",
+                                type: "success",
+                                },function(){
+                                    window.location.reload();
+                            });
+                        }
+                    });
+                }else{
+                    window.location.reload();
+                }
+            });
+       }
+
+        function Cancelled_pickup(pickupid){
+            swal({
+                title: "Are you sure to Cancelled Pickup?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Cancelled!",
+                cancelButtonText: "No",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            method: "GET",
+                            url: "http://logistics.wastelink.co/pickup/cancelled/"+pickupid+"",
+                            success: function (response) {
+                                if(response.data){
+                                    swal({
+                                        title: "",
+                                        text: "Pickup has been cancelled.",
+                                        type: "success",
+                                        },function(){
+                                            window.location.reload();
+                                        });
+                                }else{
+                                    swal("", "Error! Please try again.", "error");
+                                }
+                            }
+                        });
+                    }else{
+                        window.location.reload();
+                    }
+                });
+        }
+
+        function ApproveCancelPickupRequest(pickupid){
+            swal({
+                title: "Are you sure to Approved this Cancel Pickup Request?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "rgb(21 119 120)",
+                confirmButtonText: "Yes, Approved!",
+                cancelButtonText: "No",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            method: "GET",
+                            url: "http://logistics.wastelink.co/approved-cancelled-pickup-request/"+pickupid+"",
+                            success: function (response) {
+                                if(response.data){
+                                    swal({
+                                        title: "",
+                                        text: "Cancel Pickup Request has been successfully Approved.",
+                                        type: "success",
+                                        },function(){
+                                            window.location.reload();
+                                        });
+                                }else{
+                                    swal("", "Error! Please try again.", "error");
+                                }
+                            }
+                        });
+                    }else{
+                        window.location.reload();
+                    }
+                });
+        }
+
+        function unHoldPickupRequest(pickupid){
+            swal({
+                title: "Are you sure to UnHold this Pickup?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "rgb(21 119 120)",
+                confirmButtonText: "Yes, UnHold!",
+                cancelButtonText: "No",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            method: "GET",
+                            url: "http://logistics.wastelink.co/unhold-pickup-request/"+pickupid+"",
+                            success: function (response) {
+                                if(response.data){
+                                    swal({
+                                        title: "",
+                                        text: "Pickup has been successfully UnHold.",
+                                        type: "success",
+                                        },function(){
+                                            window.location.reload();
+                                        });
+                                }else{
+                                    swal("", "Error! Please try again.", "error");
+                                }
+                            }
+                        });
+                    }else{
+                        window.location.reload();
+                    }
+                });
+        }
+
+        function approved_pickup(pickupid,pickup_number){
+            swal(
+                    {
+                        title: "Are you sure to Accepted Pickup number #"+pickup_number+" ?",
+                        text: "",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "rgb(21 119 120)",
+                        confirmButtonText: "Yes, Accepted!",
+                        cancelButtonText: "No",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            $.ajax({
+                                method: "GET",
+                                url: "http://logistics.wastelink.co/pickup/approved/"+pickupid+"",
+                                success: function (response) {
+                                    if(response.data){
+                                        swal({
+                                            title: "",
+                                            text: "Pickup has been accepted.",
+                                            type: "success",
+                                            },function(){
+                                                window.location.reload();
+                                            });
+                                    }else{
+                                        swal("", "Error! Please try again.", "error");
+                                    }
+                                }
+                            });
+                        }else{
+                            window.location.reload();
+                        }
+                    }
+                );
+        }
+
+
+        function IntransitToWastelinkPickupStatus(trip_id,pickupid,pickup_number,vechile_deployment_date){
+            //alert(vechile_deployment_date);
+            $("#txt_intransit_pickup_id").val(pickupid);
+            $("#txt_intransit_trip_id").val(trip_id);
+            $("#txt_intransit_pickup_number").val(pickup_number);
+            $("#actual_pickup_plan_date").prop('min',vechile_deployment_date);
+            $("#intransit_pickup_number").html("Pickup #"+pickup_number);
+            $('#pickup_intransit_model').modal('show');
+        }
+        function IntransitToWastelinkUpdate(){
+
+            var pickupid = $("#txt_intransit_pickup_id").val();
+            var trip_id = $("#txt_intransit_trip_id").val();
+            var txt_intransit_pickup_number = $("#txt_intransit_pickup_number").val();
+            var actual_pickup_plan_date = $("#actual_pickup_plan_date").val();
+            if(trip_id!="" && pickupid!=""){
+                if(actual_pickup_plan_date!=""){
+                    swal(
+                        {
+                            title: "Are you sure to Pickup #"+txt_intransit_pickup_number+" Intransit to Wastelink?",
+                            text: "",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "rgb(21 119 120)",
+                            confirmButtonText: "Yes, Intransit To Wastelink!",
+                            cancelButtonText: "No",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        },
+                        function(isConfirm){
+                            if (isConfirm) {
+                                $.ajax({
+                                    method: "GET",
+                                    url: "http://logistics.wastelink.co/pickup/in-transit-to-wastelink/update/"+trip_id+"/"+pickupid+"/"+actual_pickup_plan_date+"",
+                                    success: function (response) {
+                                        console.log(response)
+                                        if(response.data){
+                                            swal({
+                                                title: "",
+                                                text: "Pickup Intransit to wastelink successfully updated.",
+                                                type: "success",
+                                                },function(){
+                                                    window.location.reload();
+                                                });
+                                        }else{
+                                            swal("", "Error! Please try again.", "error");
+                                        }
+                                    }
+                                });
+                            }else{
+                                window.location.reload();
+                            }
+                        }
+                    );
+                }else{
+                    swal("", "Please select pickup date.", "error");
+                }
+            }else{
+                swal({
+                    title: "",
+                    text: "Error! Please try again.",
+                    type: "error",
+                    },function(){
+                        window.location.reload();
+                    });
+            }
+        }
+
+        function verified_pickup(pickupid,pickup_number){
+
+            var checkedNum = $('input[name="chk_verification[]"]:checked').length;
+            if (checkedNum==4) {
+                swal(
+                    {
+                        title: "Are you sure to Verified Pickup number #"+pickup_number+" ?",
+                        text: "Are you update all checklist points Address Verification,Material Quantity Check,Material Packaging with Photos,Capture Availabilty (Hrs of operation).",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "rgb(21 119 120)",
+                        confirmButtonText: "Yes, Verified!",
+                        cancelButtonText: "No",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            var _token = $('input[name="_token"]').val();
+                            $.ajax({
+                                method: "POST",
+                                data:{'_token': _token,'pickupid':pickupid},
+                                url: "http://logistics.wastelink.co/pickup/verified",
+                                success: function (response) {
+                                    if(response.data){
+                                        swal({
+                                            title: "",
+                                            text: "Pickup has been verified.",
+                                            type: "success",
+                                            },function(){
+                                                window.location.reload();
+                                            });
+                                    }else{
+                                        swal("", "Error! Please try again.", "error");
+                                    }
+                                }
+                            });
+                        }else{
+                            window.location.reload();
+                        }
+                    }
+                );
+            }else{
+                swal("", "Please select all verification checkbox.", "error");
+            }
+
+
+        }
+
+    </script>
+   <script>
+
+
+       function show_pickup_document(document_data,doc_type){
+            $('#weightDocModel').modal('show');
+            $('#document_file_data').attr("src",document_data);
+            $('#href_view').attr("href",document_data);
+            $("#txt_document_title").html(doc_type);
+
+        }
+
+
+        //first_pickup_planned_date
+        // $('.minToday').datepicker({
+        //         startDate: '-0d',
+        //         autoclose: true
+        // });
+
+        $("#tentative_pickup_date").datepicker({
+            startDate: '+1d',
+            autoclose: true,
+            endDate: '+31d',
+        });
+
+        $(".todaylastdate").datepicker({
+            autoclose: true,
+            endDate: '0d'
+        })
+
+        var vechicle_deployment_date = "-0d";
+        if ($("#first_pickup_planned_date").attr('name') !== undefined) {
+            vechicle_deployment_date = $("#first_pickup_planned_date").val();
+        }
+        //alert(vechicle_deployment_date);
+        $("#vechicle_deployment_date").datepicker({
+            startDate: vechicle_deployment_date,
+            endDate: '0d',
+            autoclose: true
+        });
+
+        $("#vehcile_expected_arrival_date").datepicker({
+            startDate: vechicle_deployment_date,
+            //endDate: '0d',
+            autoclose: true
+        });
+
+        var complete_trip_arrival_date = "-0d";
+        if ($("#first_pickup_planned_date").attr('name') !== undefined) {
+            complete_trip_arrival_date = $("#first_pickup_planned_date").val();
+        }
+        $("#complete_trip_arrival_date").datepicker({
+            startDate: complete_trip_arrival_date,
+            endDate: '0d',
+            autoclose: true
+        });
+
+
+        function updateInvoiceStatus(id,invoice_status){
+            txt_title = "";
+            response_msg = "";
+            if(invoice_status=="InProgress"){
+                txt_title = "Are you sure to send invoice for management approval process?";
+                response_msg = "Invoice has been successfully send for management approval process.";
+            }else if(invoice_status=="Approved"){
+                txt_title = "Are you sure to invoice send for payment released?";
+                response_msg = "Invoice has been successfully send for payment released.";
+            }else if(invoice_status=="Cancelled"){
+                txt_title = "Are you sure to cancelled this invoice?";
+                response_msg = "Invoice has been successfully cancelled.";
+            }else if(invoice_status=="Released"){
+                txt_title = "Are you sure to Payment Released for this invoice?";
+                response_msg = "Payment has been successfully released for this Invoice.";
+            }
+
+            swal(
+                {
+                    title: txt_title,
+                    text: "",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#1ab394",
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "No",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            method: "GET",
+                            url: "http://logistics.wastelink.co/invoice-status-udpate/"+id+"/"+invoice_status+"",
+                            success: function (response) {
+                                console.log(response);
+                                if(response.data){
+                                    swal({
+                                        title: "",
+                                        text: response_msg,
+                                        type: "success",
+                                        },function(){
+                                            window.location.reload();
+                                        });
+                                }else{
+                                    swal("", "Error! Please try again.", "error");
+                                }
+                            }
+                        });
+                    }else{
+                        window.location.reload();
+                    }
+                }
+            );
+        }
+
+        $(document).ready(function () {
+
+        });
+    </script>
+
+</html>
